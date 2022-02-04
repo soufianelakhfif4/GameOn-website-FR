@@ -33,6 +33,7 @@ function closeModal() {
 // Validate input before submit
 // ########################################################################################
 const modalForm = document.getElementById("formReserve");
+const successDiv = document.getElementById("successDiv");
 modalForm.addEventListener("submit", validateDataOnSubmit);
 
 // Function to check if input form are validate
@@ -45,6 +46,14 @@ function validateDataOnSubmit(event) {
   var groupLast = document.getElementById("groupLast");
   var email = document.getElementById("email");
   var groupEmail = document.getElementById("groupEmail");
+  var birthday = document.getElementById("birthday");
+  var groupBirthday = document.getElementById("groupBirthday");
+  var quantity = document.getElementById("quantity");
+  var groupQuantity = document.getElementById("groupQuantity");
+  var locations = document.querySelectorAll('input[name="location"]');
+  var groupLocation = document.getElementById("groupLocation");
+  var checkbox1 = document.getElementById("checkbox1");
+  var groupCheckbox = document.getElementById("groupCheckbox");
 
   // Stop propagation before check inputs
   event.preventDefault();
@@ -62,14 +71,13 @@ function validateDataOnSubmit(event) {
   }
 
   // Check if last name have least 2 digits
-  if(last.value.length < 2)
+  if(last.value.length != 10)
   {
     groupLast.setAttribute('data-error-visible', true);
     error = true;
   } else {
     groupLast.setAttribute('data-error-visible', false);
   }
-
 
   // Check if email is valide
   if(!validateEmail(email.value)){
@@ -79,9 +87,55 @@ function validateDataOnSubmit(event) {
     groupEmail.setAttribute('data-error-visible', false);
   }
 
+  // Check if birthday is input
+  if(birthday.value.length < 2){
+    groupBirthday.setAttribute('data-error-visible', true);
+    error = true;
+  } else {
+    groupBirthday.setAttribute('data-error-visible', false);
+  }
+
+  // Check if quantity is numérique
+  if(isNaN(quantity.value) || quantity.value.length == 0)
+  {
+    groupQuantity.setAttribute('data-error-visible', true);
+    error = true;
+  } else {
+    groupQuantity.setAttribute('data-error-visible', false);
+  }
+
+  // Check if location is check
+  var locationIsSelected = false;
+  for (const location of locations) {
+    if (location.checked) {
+      locationIsSelected = true;
+      break;
+    }
+  }
+  if(!locationIsSelected)
+  {
+    groupLocation.setAttribute('data-error-visible', true);
+    error = true;
+  } else {
+    groupLocation.setAttribute('data-error-visible', false);
+  }
+
+  // Check if CGU is check
+  if(!checkbox1.checked)
+  {
+    groupCheckbox.setAttribute('data-error-visible', true);
+    error = true;
+  } else {
+    groupCheckbox.setAttribute('data-error-visible', false);
+  }
+
+
+
   // if no error, send form
   if(!error){
-    modalForm.submit();
+    // modalForm.submit();
+    modalForm.hidden = true;
+    successDiv.hidden = false;
   }
 
 }

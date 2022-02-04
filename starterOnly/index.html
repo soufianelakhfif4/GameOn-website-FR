@@ -52,7 +52,7 @@
         <div class="content">
             <span class="close modal-btn-close"></span>
             <div class="modal-body">
-                <form name="reserve" action="index.html" method="get" id="formReserve">
+                <form name="reserve" action="javascript:void(0)" method="get" id="formReserve">
 
                     <div class="formData" id="groupFirst" data-error-visible="false" data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom.">
                         <label for="first">Prénom</label><br>
@@ -69,19 +69,19 @@
                         <input class="text-control" type="email" id="email" name="email"><br>
                     </div>
 
-                    <div class="formData">
-                        <label for="birthdate">Date de naissance</label><br>
-                        <input class="text-control" type="date" id="birthdate" name="birthdate"><br>
+                    <div class="formData" id="groupBirthday" data-error-visible="false" data-error="Vous devez entrer votre date de naissance.">
+                        <label for="birthday">Date de naissance</label><br>
+                        <input class="text-control" type="date" id="birthday" name="birthday"><br>
                     </div>
 
-                    <div class="formData">
+                    <div class="formData" id="groupQuantity" data-error-visible="false" data-error="Veuillez saisir une valeur numérique">
                         <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                        <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                        <input type="text" class="text-control" id="quantity" name="quantity">
                     </div>
 
                     <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
 
-                    <div class="formData">
+                    <div class="formData" id="groupLocation" data-error-visible="false" data-error="Veuillez choisir un tournoi">
 
                         <input class="checkbox-input" type="radio" id="location1" name="location" value="New York">
                         <label class="checkbox-label" for="location1">
@@ -121,7 +121,7 @@
 
                     </div>
 
-                    <div class="formData">
+                    <div class="formData" id="groupCheckbox" data-error-visible="false" data-error="Vous devez accepter les conditions d'utilisation pour continuer">
                         <input class="checkbox-input" type="checkbox" id="checkbox1" checked>
                         <label class="checkbox2-label" for="checkbox1" required>
                             <span class="checkbox-icon"></span>
@@ -136,9 +136,15 @@
                         <br>
                     </div>
 
-                    <input class="btn-submit" type="submit" class="button" value="C'est parti"/>
+                    <input class="btn-submit button" type="submit" value="C'est parti"/>
 
                 </form>
+
+                <div id="successDiv" hidden>
+                    <div class="success-message">Merci pour votre inscription</div>
+                    <input class="btn-submit button modal-btn-close" type="button" value="Fermer"/>
+                </div>
+
             </div>
         </div>
     </div>
