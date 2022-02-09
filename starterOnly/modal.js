@@ -71,7 +71,7 @@ function validateDataOnSubmit(event) {
   }
 
   // Check if last name have least 2 digits
-  if(last.value.length != 10)
+  if(last.value.length < 2)
   {
     groupLast.setAttribute('data-error-visible', true);
     error = true;
@@ -88,7 +88,7 @@ function validateDataOnSubmit(event) {
   }
 
   // Check if birthday is input
-  if(birthday.value.length < 2){
+  if(birthday.value.length != 10){
     groupBirthday.setAttribute('data-error-visible', true);
     error = true;
   } else {
